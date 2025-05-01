@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import founder from "../assets/founder.jpg";
+---
+
+<section
+  id="founder"
+  class="max-w-full bg-[#ffc229] py-20 md:py-32 lg:py-48 flex flex-col justify-center items-center px-4 sm:px-8 relative overflow-hidden"
+>
+  <!-- Abstract shapes for modern feel -->
+  <div
+    class="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"
+  >
+  </div>
+
+  <div class="relative z-10 flex flex-col items-center max-w-5xl w-full">
+    <!-- Two-column layout on larger screens -->
+    <div
+      class="w-full flex flex-col md:flex-row md:items-center md:gap-12 lg:gap-16"
+    >
+      <!-- Image column -->
+      <div class="md:w-2/5 flex justify-center mb-8 md:mb-0">
+        <div class="relative">
+          <div
+            class="absolute inset-0 bg-indigo-500 rounded-3xl rotate-6 opacity-30"
+          >
+          </div>
+          <Image
+            src={founder}
+            alt="Dr. Jane Doe - Founder"
+            class="w-64 h-64 md:w-72 md:h-72 rounded-3xl object-cover shadow-xl relative z-10"
+            loading={"eager"}
+          />
+          <span
+            class="absolute -bottom-3 left-1/2 -translate-x-1/2 text-sm font-semibold tracking-wider text-black/95 bg-white border border-black/20 rounded-full py-2 px-4 shadow-md z-20"
+          >
+            Founder
+          </span>
+        </div>
+      </div>
+
+      <!-- Text column -->
+      <div
+        class="md:w-3/5 flex flex-col items-center md:items-start text-center md:text-left"
+      >
+        <h2
+          class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-black/90 tracking-tight"
+        >
+          Dr. John Lark
+        </h2>
+        <div class="w-16 h-1 bg-black/80 mb-6 md:mb-8 rounded-full md:mx-0">
+        </div>
+        <p class="text-xl font-medium text-black/85 mb-6 italic">
+          "Inspiring Minds, Shaping Futures"
+        </p>
+        <p class="text-lg text-black/80 leading-relaxed">
+          Welcome to DSPM! My vision is to empower every learner with the tools
+          and confidence to excel in a dynamic world. Together, let's embark on
+          a journey of growth, curiosity, and achievement. Thank you for being a
+          part of our community.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

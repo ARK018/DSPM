@@ -1,0 +1,124 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/DSPM.png";
+---
+
+<nav class="bg-[#f8f9fa] fixed top-0 left-0 w-full z-30 shadow-sm">
+  <div
+    class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-4"
+  >
+    <!-- Left: Logo -->
+    <a href="#hero" class="flex items-center space-x-3">
+      <Image src={logo} alt="DSPM Logo" loading="eager" class="h-9 w-9" />
+      <span class="text-xl font-medium text-gray-800">DSPM</span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden relative z-40 flex flex-col justify-center items-center w-10 h-10"
+      aria-label="Toggle mobile menu"
+      type="button"
+    >
+      <div
+        class="w-6 h-[2px] bg-black mb-1.5 transition-transform duration-300"
+        id="ham-top"
+      >
+      </div>
+      <div
+        class="w-6 h-[2px] bg-black transition-transform duration-300"
+        id="ham-bottom"
+      >
+      </div>
+    </button>
+
+    <!-- Desktop Nav -->
+    <div
+      class="hidden md:flex items-center space-x-6 text-gray-600 font-medium"
+    >
+      <a href="#about" class="hover:text-black transition">About</a>
+      <a href="#journey" class="hover:text-black transition">Our Journey</a>
+      <a href="#founder" class="hover:text-black transition">Founder</a>
+      <a href="/" class="hover:text-black transition">Institutes</a>
+      <a href="/" class="hover:text-black transition">Leadership</a>
+      <a
+        href="/"
+        class="bg-[#ffc229] text-black px-5 py-2 rounded-full hover:bg-yellow-400 transition"
+      >
+        Contact Us
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-x-0 top-16 bg-[#f8f9fa] h-[calc(100vh-4rem)] z-30 px-4 py-6 space-y-4 text-lg text-gray-700 font-medium transform scale-y-0 origin-top transition-transform duration-300 ease-in-out md:hidden"
+  >
+    <a href="#about" class="block hover:text-black transition">About</a>
+    <a href="#journey" class="block hover:text-black transition">Our Journey</a>
+    <a href="#founder" class="block hover:text-black transition">Founder</a>
+    <a href="/" class="block hover:text-black transition">Institutes</a>
+    <a href="/" class="block hover:text-black transition">Leadership</a>
+    <a
+      href="/"
+      class="block mt-4 text-center bg-[#ffc229] text-black px-5 py-2 rounded-full hover:bg-yellow-400 transition"
+    >
+      Contact Us
+    </a>
+  </div>
+</nav>
+
+<script>
+  if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const hamTop = document.getElementById("ham-top");
+      const hamBottom = document.getElementById("ham-bottom");
+
+      // Return early if any of the elements are not found
+      if (!menuBtn || !mobileMenu || !hamTop || !hamBottom) return;
+
+      let isOpen = false;
+
+      const toggleMenu = () => {
+        isOpen = !isOpen;
+        if (isOpen) {
+          mobileMenu.classList.remove("scale-y-0");
+          document.body.style.overflow = "hidden";
+          hamTop.style.transform = "rotate(45deg) translateY(5px)";
+          hamBottom.style.transform = "rotate(-45deg) translateY(-5px)";
+        } else {
+          mobileMenu.classList.add("scale-y-0");
+          document.body.style.overflow = "";
+          hamTop.style.transform = "rotate(0)";
+          hamBottom.style.transform = "rotate(0)";
+        }
+      };
+
+      menuBtn.addEventListener("click", toggleMenu);
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (isOpen) toggleMenu();
+        });
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (this: HTMLAnchorElement, e) {
+          const href = this.getAttribute("href");
+          if (href && href.startsWith("#")) {
+            const targetId = href.slice(1);
+            const scrollTarget = document.getElementById(targetId);
+            if (scrollTarget) {
+              e.preventDefault();
+              scrollTarget.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        });
+      });
+    });
+  }
+</script>
