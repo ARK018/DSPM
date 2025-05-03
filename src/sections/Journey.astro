@@ -1,6 +1,44 @@
 ---
 import { Image } from "astro:assets";
 import classroom from "../assets/classroom.jpg";
+
+const timelineEvents = [
+  {
+    year: "2000",
+    description:
+      "Our organization was founded with a vision to revolutionize the industry through innovation and commitment to excellence.",
+    image: classroom,
+    alt: "Organization founding in 2000",
+  },
+  {
+    year: "2004",
+    description:
+      "We expanded our operations globally and introduced our flagship product that transformed market standards.",
+    image: classroom,
+    alt: "Global expansion in 2004",
+  },
+  {
+    year: "2012",
+    description:
+      "We achieved industry recognition with multiple awards and celebrated reaching one million customers worldwide.",
+    image: classroom,
+    alt: "Awards and milestones in 2012",
+  },
+  {
+    year: "2018",
+    description:
+      "Our commitment to sustainability led to a complete overhaul of our processes, setting new industry benchmarks.",
+    image: classroom,
+    alt: "Sustainability initiative in 2018",
+  },
+  {
+    year: "2024",
+    description:
+      "Today, we continue to push boundaries with cutting-edge technology and a renewed focus on customer experience.",
+    image: classroom,
+    alt: "Innovation in 2024",
+  },
+];
 ---
 
 <section id="journey" class="w-full py-20 md:py-32 lg:py-48">
@@ -24,218 +62,51 @@ import classroom from "../assets/classroom.jpg";
     </p>
   </div>
 
-  <div class="max-w-7xl container mx-auto">
-    <div class="relative timeline-container">
-      <!-- Vertical line - only visible on larger screens -->
-      <div
-        class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-neutral-300"
-      >
-      </div>
-      <!-- Mobile vertical line -->
-      <div class="md:hidden absolute left-6 top-0 h-full w-px bg-neutral-300">
-      </div>
-      <div class="space-y-20 md:space-y-0">
-        <!-- 2000 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div
-            class="timeline-content bg-white p-6 md:p-8 rounded-lg shadow-md border border-neutral-200"
-          >
-            <h3 class="text-2xl md:text-3xl font-bold text-black mb-3 md:mb-4">
-              2000
-            </h3>
-            <p class="text-neutral-800 mb-5 leading-relaxed">
-              Our organization was founded with a vision to revolutionize the
-              industry through innovation and commitment to excellence.
-            </p>
-            <div class="overflow-hidden rounded-md">
+  <div class="relative max-w-7xl container mx-auto">
+    {/* Vertical Line */}
+    <div
+      class="absolute left-1/2 top-0 h-full w-1 bg-neutral-300 transform -translate-x-1/2 z-10"
+    >
+    </div>
+    <div class="space-y-36 relative z-10 sm:py-2 sm:px-2.5 md:py-0">
+      {
+        timelineEvents.map((event, index) => (
+          <div class="relative md:flex justify-between">
+            {/* Year Label */}
+            <div class=" md:block absolute left-1/2 transform -translate-x-1/2 sm:-top-12 md:-top-0 z-10">
+              <div class="bg-white px-4 py-1 rounded-full border border-neutral-300 text-sm font-semibold shadow-md">
+                {event.year}
+              </div>
+            </div>
+
+            {/* Text Block */}
+            <div
+              class={`md:w-5/12 px-4 mt-10 md:mt-0 ${index % 2 === 0 ? "md:pr-8 md:text-right md:order-1" : "md:pl-8 md:text-left md:order-2"} `}
+            >
+              <h3 class="text-xl md:text-2xl font-semibold text-black mb-1">
+                Event Heading {index + 1}
+              </h3>
+              <p class="text-sm text-neutral-600 italic mb-2">
+                24 Aug, {event.year}
+              </p>
+              <p class="text-neutral-800 leading-relaxed">
+                {event.description}
+              </p>
+            </div>
+
+            {/* Image Block */}
+            <div
+              class={`md:w-5/12 px-4 mt-6 md:mt-0 ${index % 2 === 0 ? "md:order-2 md:pl-8" : "md:order-1 md:pr-8"}`}
+            >
               <Image
-                src={classroom}
-                alt="Organization founding in 2000"
-                class="w-full h-48 object-cover object-center"
+                src={event.image}
+                alt={event.alt}
+                class="w-full h-60 object-cover rounded-lg shadow-md"
               />
             </div>
           </div>
-        </div>
-        <!-- 2004 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div
-            class="timeline-content bg-white p-6 md:p-8 rounded-lg shadow-md border border-neutral-200"
-          >
-            <h3 class="text-2xl md:text-3xl font-bold text-black mb-3 md:mb-4">
-              2004
-            </h3>
-            <p class="text-neutral-800 mb-5 leading-relaxed">
-              We expanded our operations globally and introduced our flagship
-              product that transformed market standards.
-            </p>
-            <div class="overflow-hidden rounded-md">
-              <Image
-                src={classroom}
-                alt="Global expansion in 2004"
-                class="w-full h-48 object-cover object-center"
-              />
-            </div>
-          </div>
-        </div>
-        <!-- 2012 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div
-            class="timeline-content bg-white p-6 md:p-8 rounded-lg shadow-md border border-neutral-200"
-          >
-            <h3 class="text-2xl md:text-3xl font-bold text-black mb-3 md:mb-4">
-              2012
-            </h3>
-            <p class="text-neutral-800 mb-5 leading-relaxed">
-              We achieved industry recognition with multiple awards and
-              celebrated reaching one million customers worldwide.
-            </p>
-            <div class="overflow-hidden rounded-md">
-              <Image
-                src={classroom}
-                alt="Awards and milestones in 2012"
-                class="w-full h-48 object-cover object-center"
-              />
-            </div>
-          </div>
-        </div>
-        <!-- 2018 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div
-            class="timeline-content bg-white p-6 md:p-8 rounded-lg shadow-md border border-neutral-200"
-          >
-            <h3 class="text-2xl md:text-3xl font-bold text-black mb-3 md:mb-4">
-              2018
-            </h3>
-            <p class="text-neutral-800 mb-5 leading-relaxed">
-              Our commitment to sustainability led to a complete overhaul of our
-              processes, setting new industry benchmarks.
-            </p>
-            <div class="overflow-hidden rounded-md">
-              <Image
-                src={classroom}
-                alt="Sustainability initiative in 2018"
-                class="w-full h-48 object-cover object-center"
-              />
-            </div>
-          </div>
-        </div>
-        <!-- 2024 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div
-            class="timeline-content bg-white p-6 md:p-8 rounded-lg shadow-md border border-neutral-200"
-          >
-            <h3 class="text-2xl md:text-3xl font-bold text-black mb-3 md:mb-4">
-              2024
-            </h3>
-            <p class="text-neutral-800 mb-5 leading-relaxed">
-              Today, we continue to push boundaries with cutting-edge technology
-              and a renewed focus on customer experience.
-            </p>
-            <div class="overflow-hidden rounded-md">
-              <Image
-                src={classroom}
-                alt="Innovation in 2024"
-                class="w-full h-48 object-cover object-center"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+        ))
+      }
     </div>
   </div>
 </section>
-
-<style>
-  .timeline-container {
-    position: relative;
-    padding: 0;
-  }
-  .timeline-item {
-    position: relative;
-    margin-bottom: 2rem;
-    padding-left: 2rem;
-    z-index: 1;
-  }
-  .timeline-marker {
-    position: absolute;
-    left: 6px;
-    top: 2rem;
-    width: 1rem;
-    height: 1rem;
-    background: #ffc229;
-    border-radius: 50%;
-    z-index: 20;
-    border: 3px solid #ffc;
-    box-shadow: 0 2px 8px 0 #0002;
-  }
-  .timeline-content {
-    position: relative;
-    max-width: 100%;
-    background: none;
-  }
-  @media (min-width: 768px) {
-    .timeline-item {
-      display: flex;
-      justify-content: flex-start;
-      padding-left: 0;
-      margin-bottom: 4rem;
-      width: 100%;
-    }
-    .timeline-item:nth-child(odd) {
-      justify-content: flex-end;
-    }
-    .timeline-content {
-      width: 45%;
-      max-width: 45%;
-    }
-    .timeline-marker {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .timeline-item:nth-child(odd) .timeline-marker {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .timeline-item:nth-child(even) .timeline-marker {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-</style>
-
-<script>
-  // This script ensures the timeline dots are positioned correctly
-  document.addEventListener("DOMContentLoaded", () => {
-    const timelineItems = document.querySelectorAll(".timeline-item");
-
-    // Function to position markers at the correct height
-    function positionMarkers() {
-      timelineItems.forEach((item) => {
-        const marker = item.querySelector(".timeline-marker");
-        const content = item.querySelector(".timeline-content");
-        if (!marker || !content) return;
-        const heading = content.querySelector("h3");
-        if (!heading) return;
-        const headingHeight = heading.offsetHeight;
-
-        // Position marker aligned with heading
-        if (window.innerWidth >= 768) {
-          (marker as HTMLElement).style.top = `${headingHeight / 2 + 24}px`; // 24px accounts for padding
-        } else {
-          (marker as HTMLElement).style.top = `${headingHeight / 2 + 16}px`; // 16px for mobile padding
-        }
-      });
-    }
-
-    // Initial positioning
-    positionMarkers();
-
-    // Reposition on resize
-    window.addEventListener("resize", positionMarkers);
-  });
-</script>

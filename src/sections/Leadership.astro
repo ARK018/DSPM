@@ -1,0 +1,105 @@
+---
+import { Image } from "astro:assets";
+import leader1 from "../assets/leader1.jpg";
+import leader2 from "../assets/leader2.jpg";
+import leader3 from "../assets/leader3.jpg";
+import leader4 from "../assets/leader4.jpg";
+const leaders = [
+  {
+    image: leader1,
+    name: "Ms. Olivia Bennett",
+    designation: "Chairwoman",
+  },
+  {
+    image: leader2,
+    name: "Mr. Ethan Walker",
+    designation: "Director of Academics",
+  },
+  {
+    image: leader3,
+    name: "Ms. Sophia Mitchell",
+    designation: "Chief Strategy Officer",
+  },
+  {
+    image: leader4,
+    name: "Mr. Noah Thompson",
+    designation: "Chief Operations Officer",
+  },
+  {
+    image: leader1,
+    name: "Ms. Olivia Bennett",
+    designation: "Chairwoman",
+  },
+  {
+    image: leader2,
+    name: "Mr. Ethan Walker",
+    designation: "Director of Academics",
+  },
+  {
+    image: leader3,
+    name: "Ms. Sophia Mitchell",
+    designation: "Chief Strategy Officer",
+  },
+  {
+    image: leader4,
+    name: "Mr. Noah Thompson",
+    designation: "Chief Operations Officer",
+  },
+];
+---
+
+<section
+  id="leadership"
+  class="max-w-full bg-[#ffc229] py-20 md:py-32 lg:py-40 flex flex-col gap-2 justify-center items-center"
+>
+  <div class="w-full flex justify-center">
+    <div class="max-w-7xl px-4 sm:px-6">
+      <!-- Header section - kept unchanged as requested -->
+      <div class="flex flex-col items-center gap-2 mb-8">
+        <span
+          class="text-xs sm:text-sm font-semibold tracking-wider text-black/95 border border-black rounded-full py-1 px-3 mb-4 mx-auto text-center"
+          >Leadership</span
+        >
+        <h2
+          class="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 text-black/90 text-center"
+        >
+          Our Visionary Leaders
+        </h2>
+        <p
+          class="max-w-md sm:max-w-xl md:max-w-3xl text-base text-black/85 mx-auto text-center mb-16"
+        >
+          Meet the dedicated individuals who guide our mission and inspire our
+          community to achieve excellence through visionary leadership and a
+          shared commitment to growth.
+        </p>
+      </div>
+
+      <!-- Square grid layout for leaders -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        {
+          leaders.map((leader) => (
+            <div class="group p-8 flex flex-col items-center">
+              <div class="relative w-36 h-36 mb-6 rounded-full overflow-hidden border-2 border-black/50 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                <Image
+                  src={leader.image}
+                  alt={leader.name}
+                  class="w-full h-full object-cover"
+                  loading={"lazy"}
+                />
+              </div>
+              <h3 class="text-xl font-bold text-black tracking-tight mb-1">
+                {leader.name}
+              </h3>
+              <div class="w-10 border-t border-black/40 mx-auto mb-2" />
+              <p class="text-sm text-black/90 font-medium tracking-wide">
+                {leader.designation}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

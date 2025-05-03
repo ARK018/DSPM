@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+import institute1 from "../assets/institute1.jpg";
+import institute2 from "../assets/institute2.jpg";
+import institute3 from "../assets/institute3.jpg";
+import institute4 from "../assets/institute4.jpg";
+import institute5 from "../assets/institute5.jpg";
+import institute6 from "../assets/institute6.jpg";
+
+const institutes = [
+  {
+    image: institute1,
+    alt: "Cambridge Institute of Technology",
+    name: "Cambridge Institute of Technology",
+    desc: "A premier institution focused on technological innovation with state-of-the-art laboratories and industry partnerships that prepare students for the digital future.",
+  },
+  {
+    image: institute2,
+    alt: "Westfield School of Business",
+    name: "Westfield School of Business",
+    desc: "Renowned for excellence in business education, offering comprehensive programs that blend theoretical knowledge with practical experience in global markets.",
+  },
+  {
+    image: institute3,
+    alt: "Aurora Creative Arts Academy",
+    name: "Aurora Creative Arts Academy",
+    desc: "A vibrant community where artistic talent flourishes through personalized mentorship, collaborative projects, and exposure to diverse creative disciplines.",
+  },
+  {
+    image: institute4,
+    alt: "Meridian Institute of Medical Sciences and Research",
+    name: "Meridian Institute of Medical Sciences and Research",
+    desc: "Pioneering medical education with cutting-edge research facilities, clinical training, and a commitment to developing compassionate healthcare professionals.",
+  },
+  {
+    image: institute5,
+    alt: "Evergreen Environmental Studies Center of Excellence",
+    name: "Evergreen Environmental Studies Center of Excellence",
+    desc: "Dedicated to sustainable development and ecological conservation through interdisciplinary research, field studies, and community engagement initiatives.",
+  },
+  {
+    image: institute6,
+    alt: "Quantum Institute of Advanced Sciences and Research",
+    name: "Quantum Institute of Advanced Sciences and Research",
+    desc: "At the forefront of scientific discovery, specializing in quantum physics, computational sciences, and interdisciplinary research that pushes boundaries.",
+  },
+];
+---
+
+<section
+  id="institutes"
+  class="py-20 md:py-32 lg:py-48 flex flex-col gap-2 justify-center items-center"
+>
+  <div class="w-full flex justify-center">
+    <div class="max-w-7xl px-4 sm:px-6">
+      <div class="flex flex-col items-center gap-2 mb-8">
+        <span
+          class="text-xs sm:text-sm font-semibold tracking-wider text-black/95 border border-black rounded-full py-1 px-3 mb-4 mx-auto text-center"
+          >Our Institutes</span
+        >
+        <h2
+          class="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 text-black/90 text-center"
+        >
+          Centers of Academic Excellence
+        </h2>
+        <p
+          class="max-w-md sm:max-w-xl md:max-w-3xl text-base text-black/85 mx-auto text-center mb-16"
+        >
+          Discover our world-class educational institutes where innovation meets
+          tradition to shape the leaders of tomorrow through cutting-edge
+          research, global exposure, and a commitment to excellence.
+        </p>
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mt-10"
+      >
+        {
+          institutes.map((inst) => (
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col">
+              <div class="relative overflow-hidden">
+                <Image
+                  src={inst.image}
+                  alt={inst.alt}
+                  loading={"eager"}
+                  class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div class="p-6 md:p-8 flex-grow">
+                <h3 class="text-xl font-bold text-gray-900 transition-colors duration-300">
+                  {inst.name}
+                </h3>
+                <p class="mt-3 text-gray-600">{inst.desc}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 text-center">
+        <a
+          href="#"
+          class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-black bg-[#ffc229] hover:bg-yellow-400 transition shadow-md hover:shadow-lg"
+        >
+          View All Institutes
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
