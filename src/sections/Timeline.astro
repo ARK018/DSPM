@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import TimelineEvent from "../components/TimelineEvent.astro";
+import classroom from "../assets/classroom.jpg";
+
+const timelineEvents = [
+  {
+    year: "2000",
+    title: "Organization founding in 2000",
+    description:
+      "Our organization was founded with a vision to revolutionize the industry through innovation and commitment to excellence.",
+    image: classroom,
+    alt: "Organization founding in 2000",
+  },
+  {
+    year: "2004",
+    title: "Global expansion in 2004",
+    description:
+      "We expanded our operations globally and introduced our flagship product that transformed market standards.",
+    image: classroom,
+    alt: "Global expansion in 2004",
+  },
+  {
+    year: "2012",
+    title: "Awards and milestones in 2012",
+    description:
+      "We achieved industry recognition with multiple awards and celebrated reaching one million customers worldwide.",
+    image: classroom,
+    alt: "Awards and milestones in 2012",
+  },
+  {
+    year: "2018",
+    title: "Sustainability initiative in 2018",
+    description:
+      "Our commitment to sustainability led to a complete overhaul of our processes, setting new industry benchmarks.",
+    image: classroom,
+    alt: "Sustainability initiative in 2018",
+  },
+  {
+    year: "2024",
+    title: "Innovation in 2024",
+    description:
+      "Today, we continue to push boundaries with cutting-edge technology and a renewed focus on customer experience.",
+    image: classroom,
+    alt: "Innovation in 2024",
+  },
+];
+---
+
+<section class="px-6 py-24 flex flex-col gap-24">
+    <div class="max-w-[1200px] mx-auto">
+        <p class="text-center text-sm uppercase tracking-wider font-medium px-4 py-1 rounded-full w-fit bg-transparent border border-black text-black mx-auto">Our Journey</p>
+        <h2 class="text-center text-2xl md:text-3xl lg:text-4xl font-bold my-4">Our Journey of Growth and Impact</h2>
+        <p class="text-center text-xl text-neutral-600 max-w-prose mx-auto">
+            Since its humble beginnings, our educational trust has grown into a beacon
+      of learning. Guided by innovation and resilience, we remain committed to
+      expanding access to quality education and empowering generations to
+      achieve their dreams.
+        </p>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto relative">
+        <div class="absolute left-1/2 -translate-x-1/2 z-[-1] w-1 h-full bg-black/10 rounded-full before:content-[''] before:absolute before:top-0 before:size-4 before:border-2 before:border-[#EBEDF0] before:bg-amber-600 before:left-1/2 before:-translate-x-1/2 before:rounded-full after:content-[''] after:absolute after:bottom-0 after:size-4 after:border-2 after:border-[#EBEDF0] after:bg-amber-600 after:left-1/2 after:-translate-x-1/2 after:rounded-full" />
+        {timelineEvents.map((event, idx) => (
+            <TimelineEvent 
+                year={event.year}
+                title={event.title}
+                description={event.description}
+                image={event.image}
+                alt={event.alt}
+                idx={idx}
+            />
+        ))}
+    </div>
+</section>
