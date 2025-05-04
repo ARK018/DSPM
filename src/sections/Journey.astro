@@ -73,7 +73,7 @@ const timelineEvents = [
         timelineEvents.map((event, index) => (
           <div class="relative md:flex justify-between">
             {/* Year Label */}
-            <div class=" md:block absolute left-1/2 transform -translate-x-1/2 sm:-top-12 md:-top-0 z-10">
+            <div class="md:block absolute left-1/2 transform -translate-x-1/2 md:-top-0 z-10">
               <div class="bg-white px-4 py-1 rounded-full border border-neutral-300 text-sm font-semibold shadow-md">
                 {event.year}
               </div>
@@ -81,22 +81,22 @@ const timelineEvents = [
 
             {/* Text Block */}
             <div
-              class={`md:w-5/12 px-4 mt-10 md:mt-0 ${index % 2 === 0 ? "md:pr-8 md:text-right md:order-1" : "md:pl-8 md:text-left md:order-2"} `}
+              class={`md:w-5/12 px-4 mt-10 md:mt-0 pt-0 sm:pt-20 ${index % 2 === 0 ? "md:pr-8 md:text-right md:order-1" : "md:pl-8 md:text-left md:order-2"} `}
             >
-              <h3 class="text-xl md:text-2xl font-semibold text-black mb-1">
+              <h3 class="text-xl bg-[#ebedf0] md:text-2xl font-semibold text-black ">
                 Event Heading {index + 1}
               </h3>
-              <p class="text-sm text-neutral-600 italic mb-2">
+              <p class="text-sm bg-[#ebedf0] text-neutral-600 italic">
                 24 Aug, {event.year}
               </p>
-              <p class="text-neutral-800 leading-relaxed">
+              <p class="text-neutral-800 bg-[#ebedf0] leading-relaxed">
                 {event.description}
               </p>
             </div>
 
             {/* Image Block */}
             <div
-              class={`md:w-5/12 px-4 mt-6 md:mt-0 ${index % 2 === 0 ? "md:order-2 md:pl-8" : "md:order-1 md:pr-8"}`}
+              class={`md:w-5/12 px-4 bg-[#ebedf0] py-6 sm:py-0 md:mt-0 ${index % 2 === 0 ? "md:order-2 md:pl-8" : "md:order-1 md:pr-8"}`}
             >
               <Image
                 src={event.image}
